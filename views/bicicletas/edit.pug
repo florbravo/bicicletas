@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    a(href='/bicicletas') Volver
+    br
+    br
+    h1 Editar bicicleta
+    br
+    br
+    form.form-inline.d-flex(method='post' action=`/bicicletas/${bici.id}/edit`)
+        .row
+            .col-md-10.col-lg-8.mx-auto
+                label(for='id') Id
+                input#id.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.id name='id' placeholder='Identifier')
+
+                label(for='color') Color
+                input#color.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.color name='color' placeholder='Color')
+
+                label(for='modelo') Modelo
+                input#modelo.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.modelo name='modelo' placeholder='Modelo')
+
+                label(for='lat') Ubicación lat
+                input#lat.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.ubicacion[0] name='lat' placeholder='Ubicación 1')
+
+                label(for='lng') Ubicación lng
+                input#lng.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.ubicacion[1] name='lng' placeholder='Ubicación 2')
+
+                button.btn.btn-primary.mx-auto(type='submit') Submit
+

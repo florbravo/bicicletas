@@ -20,3 +20,18 @@ exports.bicicleta_delete_post = function (req, res) {
 
     res.redirect('/bicicletas');
 }
+
+exports.bicicleta_edit_get = function (req, res) {
+    let bici = Bicicleta.findById(req.params.id);
+    console.log(bici);
+    res.render('bicicletas/edit', {bici});
+}
+exports.bicicleta_edit_post = function (req, res) {
+    let bici = Bicicleta.findById(req.params.id);
+    bici.id = req.body.id;
+    bici.modelo = req.body.modelo;
+    bici.color = req.body.color;
+    bici.ubicacion = [req.body.lat, req.body.lng];
+
+    res.redirect('/bicicletas');
+}
