@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="300c3eae-7d46-454f-86e7-2e1573c5f0cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/bicicleta.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/bicicleta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/bicicleta.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/bicicleta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/bicicletas.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/bicicletas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bicicletas/create.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/bicicletas/create.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bicicletas/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/bicicletas/index.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.pug" afterDir="false" />
+    <list default="true" id="00cc78bc-3234-4d00-a7fa-a263ef3b63fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1h9m9J3dtHZNA8QCiHdbwmgG2Hh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1hKtA6GS3BD40lRbQWxk510WaEg" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,12 +35,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="300c3eae-7d46-454f-86e7-2e1573c5f0cf" name="Default Changelist" comment="" />
-      <created>1599431530366</created>
+      <changelist id="00cc78bc-3234-4d00-a7fa-a263ef3b63fa" name="Default Changelist" comment="" />
+      <created>1599771464600</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1599431530366</updated>
-      <workItem from="1599431531859" duration="1286000" />
+      <updated>1599771464600</updated>
+      <workItem from="1599771465695" duration="5519000" />
     </task>
     <servers />
   </component>
