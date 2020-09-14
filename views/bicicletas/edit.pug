@@ -7,11 +7,11 @@ block content
     h1 Editar bicicleta
     br
     br
-    form.form-inline.d-flex(method='post' action=`/bicicletas/${bici.id}/edit`)
+    form.form-inline.d-flex(method='post' action=`/bicicletas/${bici._id}/edit`)
         .row
             .col-md-10.col-lg-8.mx-auto
-                label(for='id') Id
-                input#id.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.id name='id' placeholder='Identifier')
+                label(for='code') Code
+                input#id.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.code name='code' placeholder='Identifier')
 
                 label(for='color') Color
                 input#color.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=bici.color name='color' placeholder='Color')

@@ -1,39 +1,40 @@
-const Bicicleta = function (id, color, modelo, ubicacion) {
-    this.id = id;
-    this.color = color;
-    this.modelo = modelo;
-    this.ubicacion = ubicacion;
-}
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-Bicicleta.prototype.toString = function() {
-    return 'id: ' + this.id + ' | color: ' + this.color;
-}
-
-Bicicleta.allBicis = [];
-Bicicleta.add = function (aBici) {
-    Bicicleta.allBicis.push(aBici);
-}
-Bicicleta.findById = function (aBiciId) {
-    let aBici = Bicicleta.allBicis.find(x => x.id == aBiciId);
-    if (aBici) {
-        return aBici;
+const biciletaSchema = new Schema({
+    code: Number,
+    color: String,
+    modelo: String,
+    ubicacion: {
+        type: [Number], index: { type: '2dsphere', sparse: true}
     }
+});
 
-    throw new Error(`Not found! ${aBiciId}`);
-}
-Bicicleta.removeById= function (aBiciId) {
-    for(let i = 0;i < Bicicleta.allBicis.length; i++) {
-        if (Bicicleta.allBicis[i].id == aBiciId) {
-            Bicicleta.allBicis.splice(i, 1);
-            break;
-        }
-    }
-}
+biciletaSchema.statics.createInstance = function(code, color, modelo, ubicacion) {
+    return new this({
+        code: code,
+        color: color,
+        modelo: modelo,
+        ubicacion: ubicacion
+    });
+};
+biciletaSchema.methods.toString = () => {
+    return 'id: ' + this.code + ' | color: ' + this.color;
+};
+biciletaSchema.statics.allBicis = function(cb) {
+    return this.find({}, cb);
+};
+biciletaSchema.statics.add = function(aBici, cb) {
+    return this.create(aBici, cb);
+};
+biciletaSchema.statics.findByCode = function(aCode, cb) {
+    return this.findOne({ code: aCode }, cb);
+};
+biciletaSchema.statics.removeByCode = function(aCode, cb) {
+    return this.deleteOne({ code: aCode }, cb);
+};
+biciletaSchema.statics.removeById = function(biciId, cb) {
+    return this.deleteOne({ _id: biciId }, cb);
+};
 
-let a = new Bicicleta(1, 'rojo', 'urbana', [-34.5664837,-58.4521725]);
-let b = new Bicicleta(2, 'blanca', 'urbana', [-34.5852918,-58.4233439]);
-
-Bicicleta.add(a);
-Bicicleta.add(b);
-
-module.exports = Bicicleta;
+module.exports = mongoose.model('Bicicleta', biciletaSchema);

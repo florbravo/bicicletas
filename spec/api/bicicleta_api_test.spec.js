@@ -1,61 +1,83 @@
-const Bicicleta = require('../../models/bicicleta');
 const request = require('request');
 const server = require('../../bin/www');
+const mongoose = require('mongoose');
 
-beforeEach(() => {
-    Bicicleta.allBicis = [];
-});
+const Bicicleta = require('../../models/bicicleta');
+const Usuario = require('../../models/usuario');
+const Reserva = require('../../models/reserva');
+
+const baseUrl = 'http://localhost:5000/api/';
+mongoose.connection.close();
 
 describe('Bicicleta API', () => {
-    describe('GET Bicicletas /', () => {
-        it('status 200', () => {
-            expect(Bicicleta.allBicis.length).toBe(0);
-            let a = new Bicicleta(1, 'rojo', 'urbana', [-34.5664837,-58.4521725]);
-            Bicicleta.add(a);
-
-            request.get('http://localhost:5000/api/bicicletas', function(error, response, body) {
-                expect(response.statusCode).toBe(200);
+    beforeAll(function (done) {
+        mongoose.connection.close().then(() => {
+            const mongoDB = 'mongodb://localhost/test_db';
+            mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+            mongoose.set('useCreateIndex', true);
+            const db = mongoose.connection;
+            db.on('error', console.error.bind(console, 'MongoDB connection error: '));
+            db.once('open', function () {
+                console.log('We are connected to test database!');
+                done();
             });
         });
     });
-});
 
+    afterEach(function(done) {
+        Reserva.deleteMany({}, (err, success) => {
+            Usuario.deleteMany({}, (err, success) => {
+                Bicicleta.deleteMany({}, (err, success) => {
+                    done();
+                });
+            });
+        });
+    });
 
-describe('POST Bicicletas /create', () => {
-    it('status 200', (done) => {
+    it('GET Bicicletas /', () => {
+        let a = new Bicicleta({code: 1, color: 'rojo', modelo: 'urbana', ubicacion: [-34.5664837, -58.4521725]});
+        Bicicleta.add(a);
+
+        request.get(baseUrl + 'bicicletas', function (error, response, body) {
+            expect(response.statusCode).toBe(200);
+        });
+    });
+
+    it('POST Bicicletas /create', (done) => {
         const headers = {'content-type': 'application/json'};
-        let aBici = '{ "id":"10","color":"lila","modelo":"urbana","lat":"-34","lng":"-58" }';
+        let aBici = '{ "code": 10,"color":"lila","modelo":"urbana","lat":"-34","lng":"-58" }';
 
         request.post({
             headers: headers,
-            url: 'http://localhost:5000/api/bicicletas/create',
+            url: baseUrl + 'bicicletas/create',
             body: aBici
-        }, function(error, response, body) {
+        }, function (error, response, body) {
             expect(response.statusCode).toBe(200);
-            expect(Bicicleta.findById(10).color).toBe('lila');
-            done();
+            Bicicleta.findByCode(10, function (err, bici) {
+                expect(bici.color).toBe('lila');
+                done();
+            });
         });
     });
-});
 
-describe('DELETE Bicicletas /delete', () => {
-    it('status 200', (done) => {
-        const headers = {'content-type': 'application/json'};
-
-        expect(Bicicleta.allBicis.length).toBe(0);
-        let a = new Bicicleta(20, 'rojo', 'urbana', [-34.5664837,-58.4521725]);
+    it('DELETE Bicicletas /delete', (done) => {
+        let a = new Bicicleta({code: 20, color: 'rojo', modelo: 'urbana', ubicacion: [-34.5664837, -58.4521725]});
         Bicicleta.add(a);
 
-        let aBici = '{ "id":"20" }';
+        const aBici = '{ "code": 20 }';
+        const headers = {'content-type': 'application/json'};
 
         request.delete({
             headers: headers,
-            url: 'http://localhost:5000/api/bicicletas/delete',
+            url: baseUrl + 'bicicletas/delete',
             body: aBici
-        }, function(error, response, body) {
+        }, function (error, response, body) {
             expect(response.statusCode).toBe(200);
-            expect(Bicicleta.allBicis.length).toBe(0);
-            done();
+            Bicicleta.allBicis(function (err, bicis) {
+                expect(bicis.length).toBe(0);
+                done();
+            });
         });
+
     });
 });
