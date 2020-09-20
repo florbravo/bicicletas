@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    a(href='/usuarios') Volver
+    br
+    br
+    h1 Editar Usuario
+    br
+    br
+    form.form-inline.d-flex(method='post' action=`/usuarios/${usuario._id}/update`)
+        .row
+            .col-md-10.col-lg-8.mx-auto
+                label(for='nombre') Nombre
+                input#nombre.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=usuario.nombre name='nombre' placeholder='Nombre')
+
+                label(for='email') Email
+                input#email.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' value=usuario.email name='email' placeholder='Email')
+
+                button.btn.btn-primary.mx-auto(type='submit') Submit
+

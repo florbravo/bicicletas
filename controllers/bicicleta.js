@@ -1,4 +1,4 @@
-var Bicicleta = require('../models/bicicleta');
+const Bicicleta = require('../models/bicicleta');
 
 exports.bicicleta_list = function (req, res){
     Bicicleta.allBicis(function (err, bicis) {

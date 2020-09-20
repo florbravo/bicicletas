@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    a.btn(href='/usuarios/create') Create
+
+    table.table
+        thead
+            tr
+                th(scope='col') #
+                th(scope='col') Nombre
+                th(scope='col') Email
+                th(scope='col') Verificado
+                th(scope='col')
+                th(scope='col')
+        tbody
+            each usuario in usuarios
+                tr
+                    td(scope='row')= usuario._id
+                    td= usuario.nombre
+                    td= usuario.email
+                    td= (usuario.verificado ? 'Si' : 'No')
+                    td
+                        a(href='usuarios/' + usuario._id + '/update' class='btn') Editar
+                    td
+                        form.inline(method='post', action='usuarios/' + usuario._id + '/delete')
+                            input(type='hidden' name='id' value= usuario._id)
+                            button.link-button(type='submit' name='submit_para' value='submit_value' class='btn') Eliminar
