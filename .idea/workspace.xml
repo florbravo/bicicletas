@@ -4,10 +4,10 @@
     <list default="true" id="00cc78bc-3234-4d00-a7fa-a263ef3b63fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bicicleta.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/bicicleta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/usuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/usuarios/create.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/usuarios/create.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +49,9 @@
       <workItem from="1600298518573" duration="200000" />
       <workItem from="1600298773433" duration="13000" />
       <workItem from="1600379385563" duration="1501000" />
-      <workItem from="1600535850826" duration="9046000" />
+      <workItem from="1600535850826" duration="16411000" />
+      <workItem from="1600690801047" duration="17000" />
+      <workItem from="1600718874693" duration="1111000" />
     </task>
     <servers />
   </component>
@@ -57,15 +59,15 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1835" y="291" width="1439" height="662" key="find.popup" timestamp="1600628194373">
-      <screen x="1600" y="0" width="1920" height="1080" />
+    <state x="196" y="348" width="1200" height="552" key="find.popup" timestamp="1600719968937">
+      <screen x="0" y="180" width="1600" height="900" />
     </state>
-    <state x="196" y="348" width="1200" height="552" key="find.popup/1600.0.1920.1080/0.180.1600.900@0.180.1600.900" timestamp="1600085119892" />
-    <state x="1835" y="291" width="1439" height="662" key="find.popup/1600.0.1920.1080/0.180.1600.900@1600.0.1920.1080" timestamp="1600628194373" />
-    <state x="2156" y="230" width="807" height="814" key="search.everywhere.popup" timestamp="1600628187662">
+    <state x="196" y="348" width="1200" height="552" key="find.popup/1600.0.1920.1080/0.180.1600.900@0.180.1600.900" timestamp="1600719968937" />
+    <state x="1835" y="291" width="1439" height="662" key="find.popup/1600.0.1920.1080/0.180.1600.900@1600.0.1920.1080" timestamp="1600634750067" />
+    <state x="2156" y="230" width="807" height="814" key="search.everywhere.popup" timestamp="1600633224259">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="463" y="372" width="672" height="678" key="search.everywhere.popup/1600.0.1920.1080/0.180.1600.900@0.180.1600.900" timestamp="1600536140980" />
-    <state x="2156" y="230" width="807" height="814" key="search.everywhere.popup/1600.0.1920.1080/0.180.1600.900@1600.0.1920.1080" timestamp="1600628187662" />
+    <state x="2156" y="230" width="807" height="814" key="search.everywhere.popup/1600.0.1920.1080/0.180.1600.900@1600.0.1920.1080" timestamp="1600633224259" />
   </component>
 </project>
