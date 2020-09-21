@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1 Loggin
+    br
+    br
+    if info
+        p.alert-danger #{info.message}
+    form.form-inline.d-flex(method='post')
+        .row
+            .col-md-10.col-lg-8.mx-auto
+                label(for='email') Email
+                input#email.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='text' name='email' placeholder='Email')
+
+                label(for='password') Contraseña
+                input#password.form-control.flex-fill.mr-0.mr-sm-2.mb-3.mb-sm-0(type='password' name='password' placeholder='Password 1')
+
+                a.nav-link.js-scroll-trigger(href='/forgotPassword') Olvidé mi contraseña
+
+                button.btn.btn-primary.mx-auto(type='submit') Submit
+

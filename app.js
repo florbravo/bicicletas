@@ -129,7 +129,7 @@ app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
 app.use('/token', tokenRouter);
 
-app.use('/bicicletas', biciRouter);
+app.use('/bicicletas', loggedIn, biciRouter);
 app.use('/api/bicicletas', biciAPIRouter);
 app.use('/api/usuarios', usuariosAPIRouter);
 
@@ -148,5 +148,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    console.log('user not logged in');
+    res.redirect('/login');
+  }
+}
 
 module.exports = app;
