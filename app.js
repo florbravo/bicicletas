@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -35,7 +36,7 @@ app.use(session({
 }));
 
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb://localhost/red_bicicletas';
+const mongoDB = process.env.MONGO_URI;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 mongoose.Promise = global.Promise;
