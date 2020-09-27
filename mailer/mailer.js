@@ -1,13 +1,33 @@
 const nodemailer = require('nodemailer');
+const sgTransport = require('nodemailer-sendgrid-transport');
 
 // Mailer
-const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-        user: 'justus.bernhard17@ethereal.email',
-        pass: 'XtsQPnXhnNc8Wfjejv'
+let mailConfig;
+if (process.env.NODE_ENV === 'production') {
+    const options = {
+        auth: {
+            api_key: process.env.SENDGRID_API_SECRET
+        }
+    };
+    mailConfig = sgTransport(options);
+} else {
+    if (process.env.NODE_ENV === 'staging') {
+        const options = {
+            auth: {
+                api_key: process.env.SENDGRID_API_SECRET
+            }
+        };
+        mailConfig = sgTransport(options);
+    } else {
+        mailConfig = {
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: process.env.ethereal_user,
+                pass: process.env.ethereal_password,
+            }
+        };
     }
-});
+}
 
-module.exports = transporter;
+module.exports = nodemailer.createTransport(mailConfig);
