@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 
 const passport = require('./config/passport');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 const Usuario = require('./models/usuario');
 const Token = require('./models/token');
@@ -21,7 +22,19 @@ const authAPIRouter = require('./routes/api/auth');
 const biciAPIRouter = require('./routes/api/bicicletas');
 const usuariosAPIRouter = require('./routes/api/usuarios');
 
-const store = new session.MemoryStore;
+let store;
+if (process.env.NODE_ENV === 'development') {
+    store = new session.MemoryStore;
+} else {
+    store = new MongoDBStore({
+        uri: process.env.MONGO_URI,
+        collection: 'sessions',
+    });
+    store.on('error', function (error){
+        assert.ifError(error);
+        assert.ok(false);
+    });
+}
 
 var app = express();
 
@@ -152,6 +165,17 @@ app.use('/api/usuarios', usuariosAPIRouter);
 app.use('/privacy_policy', function (req,res) {
     res.sendFile('public/privacy_policy.html');
 });
+
+// Google OAuth
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

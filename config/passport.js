@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const Usuario = require('../models/usuario');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new LocalStrategy({
         usernameField: 'email',
@@ -13,6 +14,18 @@ passport.use(new LocalStrategy({
             if (!usuario.validPassword(password)) { return done(null, false); }
 
             return done(null, usuario);
+        });
+    }
+));
+
+passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.HOST + "/auth/google/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        Usuario.findOneOrCreateByGoogle(profile, function (err, user) {
+            return cb(err, user);
         });
     }
 ));
