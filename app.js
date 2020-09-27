@@ -167,9 +167,8 @@ app.use('/privacy_policy', function (req,res) {
 });
 
 // Google OAuth
-/*
 app.get('/auth/google',
-    passport.authenticate('google', { scope: ['profile'] }));
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
@@ -177,18 +176,6 @@ app.get('/auth/google/callback',
         // Successful authentication, redirect home.
         res.redirect('/');
     });
-*/
-app.get('/auth/google',
-    passport.authenticate('google', { scope:
-            [ 'https://www.googleapis.com/auth/plus.login',
-                , 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
-    ));
-
-app.get( '/auth/google/callback',
-    passport.authenticate( 'google', {
-        successRedirect: '/auth/google/success',
-        failureRedirect: '/auth/google/failure'
-    }));
 
 
 // catch 404 and forward to error handler
