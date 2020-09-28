@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00cc78bc-3234-4d00-a7fa-a263ef3b63fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/api/authControllerAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/api/authControllerAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/usuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +55,7 @@
       <workItem from="1600535850826" duration="16411000" />
       <workItem from="1600690801047" duration="17000" />
       <workItem from="1600718874693" duration="5295000" />
-      <workItem from="1601324586161" duration="1862000" />
+      <workItem from="1601324586161" duration="2191000" />
     </task>
     <servers />
   </component>
