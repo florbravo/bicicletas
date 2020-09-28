@@ -1,3 +1,4 @@
+//require('newrelic');//Heroku pide tarjeta para poder integrar newrelic
 require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
